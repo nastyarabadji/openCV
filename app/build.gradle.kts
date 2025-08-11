@@ -41,6 +41,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+//    implementation(libs.support.v4)
+//    implementation(files("libs/zbar.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -51,4 +53,8 @@ dependencies {
     implementation("androidx.camera:camera-view:1.3.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("com.google.zxing:core:3.5.2")
+//    implementation("com.journeyapps.barcodescanner:zxing:1.9.13")
+//    implementation("com.journeyapps:barcodescanner:4.3.0")
+//    implementation("com.github.ZBar:android:0.2")
+//    implementation("me.dm7.barcodescanner:zbar:1.9.8")
 }
