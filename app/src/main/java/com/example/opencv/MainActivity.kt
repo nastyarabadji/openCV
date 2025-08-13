@@ -35,6 +35,7 @@ import org.opencv.core.Point
 
 class MainActivity : AppCompatActivity() {
     private lateinit var scanButton: Button
+
     private val reader = MultiFormatReader().apply {
         setHints(EnumMap<DecodeHintType, Any>(DecodeHintType::class.java).apply {
             put(DecodeHintType.TRY_HARDER, true)
@@ -137,21 +138,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showResult(result: String) {
-        val resultTextView = findViewById<TextView>(R.id.scanResult)
-        resultTextView.text = "Результат: $result"
-
-        // Делаем текст копируемым по клику
-        resultTextView.setOnClickListener {
-            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("Scan result", result)
-            clipboard.setPrimaryClip(clip)
-            Toast.makeText(this, "Результат скопирован", Toast.LENGTH_SHORT).show()
+        // Запускаем ResultActivity с результатом
+        Intent(this, ResultActivity::class.java).apply {
+            putExtra("SCAN_RESULT", result)
+            startActivity(this)
         }
-
-        // Автоматически копируем в буфер обмена
-        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("Scan result", result)
-        clipboard.setPrimaryClip(clip)
     }
 
     private fun resizeBitmap(bitmap: Bitmap, maxSize: Int): Bitmap {
